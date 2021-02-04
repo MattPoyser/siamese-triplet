@@ -56,7 +56,6 @@ def train_epoch(train_loader, model, loss_fn, optimizer, cuda, log_interval, met
 
 
         optimizer.zero_grad()
-        raise AttributeError(*data)
         outputs = model(*data)
 
         if type(outputs) not in (tuple, list):
