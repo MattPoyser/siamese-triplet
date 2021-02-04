@@ -1,7 +1,7 @@
 from trainer import fit
 from datasets import TripletMNIST
 from torchvision import datasets, transforms
-from networks import EmbeddingNet, ClassificationNet
+from networks import EmbeddingNet, TripletNet
 import torch
 from torch import nn
 
@@ -30,7 +30,7 @@ def main():
         num_workers=4, pin_memory=True)
 
     embedding_net = EmbeddingNet()
-    model = ClassificationNet(embedding_net, 10)
+    model = TripletNet(embedding_net)
 
     criterion = nn.TripletMarginLoss(margin=1.0).cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
