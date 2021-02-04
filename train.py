@@ -30,7 +30,7 @@ def main():
         num_workers=4, pin_memory=True)
 
     embedding_net = EmbeddingNet()
-    model = TripletNet(embedding_net)
+    model = TripletNet(embedding_net).cuda()
 
     criterion = nn.TripletMarginLoss(margin=1.0).cuda()
     optimizer = torch.optim.Adam(model.parameters(), lr=1e-3)
